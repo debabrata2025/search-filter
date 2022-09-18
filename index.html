@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search filter</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<section class="search_sec">
+       <div class="heading">
+            search filter
+       </div>
+        <div class="indiv">
+            <input type="text" placeholder="search here..." class="userin"
+             onkeyup="search()">
+        </div>
+    <div class="mytable" >
+        <table>
+            <tr>
+                <th width="50%" >name</th>
+                <th width="50%">weapons</th>
+            </tr>
+            <tr>
+                <td>A.R</td>
+                <td>M4A1, SCAR, SKS, WOODPICKER, FAMUS, M60, M14</td>
+            </tr>
+            <tr>
+                <td>MID RANGE</td>
+                <td>UGI, UMP, MP40</td>
+            </tr>
+            <tr>
+                <td>SHORT GUN</td>
+                <td>M10, M1800, MP40</td>
+            </tr>
+            <tr>
+                <td>HAND GUN</td>
+                <td>DESIRE, M500</td>
+            </tr>
+            <tr>
+                <td>OTHERS</td>
+                <td>PAN, BAT, KNIFE</td>
+            </tr>    
+        </table>
+    </div>
+</section>
+
+
+
+<script>
+	const search = () => {
+		let usersearch = document.querySelector('.userin').value.toUpperCase();
+		const mytab = document.querySelector('table');
+
+		let tr = mytab.getElementsByTagName('tr');
+		
+		for(let i=0; i<tr.length;i++){
+			let td = tr[i].getElementsByTagName('td')[0];
+
+			if (td) {
+				let textval = td.textContent || td.innerHTML;
+
+				if (textval.toUpperCase().indexOf(usersearch) > -1) {
+					
+					tr[i].style.display = "";
+				}else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+
+	}
+	
+</script>
+</body>
+</html>
